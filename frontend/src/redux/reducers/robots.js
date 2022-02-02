@@ -18,6 +18,7 @@ const changeRobots=(state, action)=>{
 
 
     const robot=action.payload
+    console.log('98889999999',robot)
     const index=state.robots.findIndex((item)=>item.id===robot.id)
     state.robots[index]=robot
     console.log('index',index)

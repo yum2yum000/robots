@@ -27,6 +27,13 @@ fontSize:'22px'
    marginTop:'10px',
    marginBottom:'10px',
    padding:'15px',
+  },
+  cardButton:{
+    minWidth: '12px',
+    padding: '8px',
+    marginRight:'5px',
+    marginLeft:'5px',
+    lineHeight:'0'
   }
 });
 export default useStyles;

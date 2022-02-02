@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 
 
 import robotReducer from './robots';
-import cardReducer from './cards';
+import cartReducer from './carts';
 
 
 const rootReducer = combineReducers({
 
     robot: robotReducer,
-    card: cardReducer,
+    cart: cartReducer,
 
 });
 

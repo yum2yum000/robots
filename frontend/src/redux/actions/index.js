@@ -1,2 +1,2 @@
 export {getRobots} from './robots'
-export {addToCard} from './cards'
+export {addToCard,handleIncrement,handleDecrement} from './carts'

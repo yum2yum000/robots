@@ -32,9 +32,6 @@ function handleChangeRobots(data) {
   }
   export function changeRobots(data) {
     return  dispatch => {
-     console.log('dddddddddd',data)
-      dispatch(handleChangeRobots(data))
-        
-    
+      dispatch(handleChangeRobots(data));
     }
   }

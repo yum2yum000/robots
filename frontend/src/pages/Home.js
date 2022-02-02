@@ -3,20 +3,14 @@ import React, { useEffect } from 'react'
 import {
     Grid,
     Card,
-    CardActionArea,
-    CardMedia,
     CardContent,
-    Typography,
-    CardActions,
-    Button,
   } from '@material-ui/core';
   import Layout from '../components/Layout';
   import useStyles from '../utils/styles';
   import { useSelector ,useDispatch } from 'react-redux'
-  import useDateFormat from '../hooks/dateFormat'
-  import usePriceFormat from '../hooks/priceFormat'
-  import {getRobots,addToCard} from '../redux/actions/index'
-  
+  import {getRobots,addToCard,handleIncrement,handleDecrement} from '../redux/actions/index'
+  import RobotList from '../components/robots/robotList'
+  import Cart from '../components/basket/cart'
 
   export default function Home() {
     const classes = useStyles();
@@ -29,12 +23,10 @@ import {
     }, [dispatch])
   
 
-    const dateFormat = useDateFormat();
-    const priceFormat = usePriceFormat();
-
+ 
     const robots = useSelector((state) => state.robot.robots)
-    const cartItems = useSelector((state) => state.card.cartItems)
-    const totalPrice= useSelector((state) => state.card.totalPrice)
+    const cartItems = useSelector((state) => state.cart.cartItems)
+    const totalPrice= useSelector((state) => state.cart.totalPrice)
      
     console.log('333333ddd',robots)
     return (
@@ -44,7 +36,8 @@ import {
           
           <Grid container columns={12} >
           <Grid item xs={12} md={8} >
-          <Grid container >
+            <RobotList robots={robots} addToCard={addToCard} classes={classes}></RobotList>
+          {/* <Grid container >
 
           { robots && robots?.map((product) => (
               <Grid item xs={12} md={4} key={product.name} className={classes.marginCard}>
@@ -69,38 +62,15 @@ import {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}</Grid>
+            ))}</Grid> */}
             </Grid>
  
             <Grid item xs={12} md={4} >
             <Card >
                   
                     <CardContent>
-                   
-                     
-                      <Grid container >
-                        {
-                          cartItems?.map((item)=>(
-                            <React.Fragment key={item.id}>
-                             <Grid item xs={6} md={6} >
-                        {item.qty} {priceFormat(item.price)}
-                        </Grid>
-                        <Grid item xs={6} md={6} className={classes.right}>
-                        {item.name}
-                        </Grid>
-                       
-                        
-                            </React.Fragment>
-                          ))
-                        }
-                         <Grid item xs={12} md={12} className={classes.right}>
-                        {priceFormat(totalPrice)}
-                        </Grid>
-                        </Grid>
-                     
-                      
-                     
-                     
+                      <Cart handleIncrement={handleIncrement} handleDecrement={handleDecrement} cartItems={cartItems} totalPrice={totalPrice} classes={classes}></Cart>
+
                     </CardContent>
                  
                  
