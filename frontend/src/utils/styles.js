@@ -8,8 +8,8 @@ const useStyles = makeStyles({
       marginLeft: 10,
     },
   },
-  brand:{
-fontSize:'22px'
+  brand: {
+    fontSize: '22px',
   },
   main: {
     minHeight: '80vh',
@@ -20,20 +20,31 @@ fontSize:'22px'
   footer: {
     textAlign: 'center',
   },
-  right:{
-    textAlign:'right'
+  right: {
+    textAlign: 'right',
   },
-  marginCard:{
-   marginTop:'10px',
-   marginBottom:'10px',
-   padding:'15px',
+  center: {
+    textAlign: 'center',
   },
-  cardButton:{
+  marginCard: {
+    marginTop: '10px',
+    marginBottom: '10px',
+    padding: '15px',
+  },
+  cardButton: {
     minWidth: '12px',
     padding: '8px',
-    marginRight:'5px',
-    marginLeft:'5px',
-    lineHeight:'0'
-  }
+    marginRight: '5px',
+    marginLeft: '5px',
+    lineHeight: '0',
+  },
+  orderMobile: {
+    ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+      order: '2',
+    }
+    
+
+  
+  },
 });
 export default useStyles;

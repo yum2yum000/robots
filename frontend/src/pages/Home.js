@@ -8,7 +8,7 @@ import {
   import Layout from '../components/Layout';
   import useStyles from '../utils/styles';
   import { useSelector ,useDispatch } from 'react-redux'
-  import {getRobots,addToCard,handleIncrement,handleDecrement} from '../redux/actions/index'
+  import {getRobots,handleItemsCard,handleIncrement,handleDecrement} from '../redux/actions/index'
   import RobotList from '../components/robots/robotList'
   import Cart from '../components/basket/cart'
 
@@ -27,54 +27,38 @@ import {
     const robots = useSelector((state) => state.robot.robots)
     const cartItems = useSelector((state) => state.cart.cartItems)
     const totalPrice= useSelector((state) => state.cart.totalPrice)
+    const totalCount= useSelector((state) => state.cart.totalCount)
      
     console.log('333333ddd',robots)
     return (
       <Layout>
         <div>
-          <h1>Products</h1>
-          
-          <Grid container columns={12} >
-          <Grid item xs={12} md={8} >
-            <RobotList robots={robots} addToCard={addToCard} classes={classes}></RobotList>
-          {/* <Grid container >
+          <h1>Robots</h1>
 
-          { robots && robots?.map((product) => (
-              <Grid item xs={12} md={4} key={product.name} className={classes.marginCard}>
-                <Card >
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      image={product.image}
-                      title={product.name}
-                    ></CardMedia>
-                    <CardContent>
-                      <Typography>{product.name}</Typography>
-                     
-                      <Typography>{dateFormat(product.createdAt)}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Typography>{priceFormat(product.price)}</Typography>
-                    <Button size="small" color="primary" onClick={()=>dispatch(addToCard(product))}>
-                      Add to cart
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}</Grid> */}
+          <Grid container spacing={2} 
+    justifyContent="center">
+            <Grid item xs={12}  sm={6} md={7} lg={8}  className={classes.orderMobile}>
+              <RobotList
+                robots={robots}
+                handleItemsCard={handleItemsCard}
+                classes={classes}
+              ></RobotList>
+       
             </Grid>
- 
-            <Grid item xs={12} md={4} >
-            <Card >
-                  
-                    <CardContent>
-                      <Cart handleIncrement={handleIncrement} handleDecrement={handleDecrement} cartItems={cartItems} totalPrice={totalPrice} classes={classes}></Cart>
 
-                    </CardContent>
-                 
-                 
-                </Card>
+            <Grid item xs={12} sm={6} md={5} lg={4}  style={{paddingTop:'30px'}}>
+              <Card>
+                <CardContent>
+                  <Cart
+                    handleIncrement={handleIncrement}
+                    handleDecrement={handleDecrement}
+                    cartItems={cartItems}
+                    totalPrice={totalPrice}
+                    classes={classes}
+                    totalCount={totalCount}
+                  ></Cart>
+                </CardContent>
+              </Card>
             </Grid>
           </Grid>
         </div>

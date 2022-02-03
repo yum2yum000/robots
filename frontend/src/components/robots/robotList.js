@@ -6,19 +6,21 @@ import {
 
  
 const RobotList=(props)=>{
-const {robots,addToCard,classes }=props
+const { robots, handleItemsCard, classes } = props;
 
 
-    return(
-        <Grid container >
-
-        { robots && robots?.map((robot) => (
-          
-                <Robot robot={robot} classes={classes} addToCard={addToCard}></Robot>
-          
-            
-          ))}</Grid>
-    )
+    return (
+      <Grid container>
+        {robots &&
+          robots?.map((robot) => (
+            <Robot
+              robot={robot}
+              classes={classes}
+              handleItemsCard={handleItemsCard}
+            ></Robot>
+          ))}
+      </Grid>
+    );
 }
 
 

@@ -10,12 +10,12 @@ export default function Layout({ children }) {
     
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <Typography>amazona</Typography>
+        
         </Toolbar>
       </AppBar>
       <Container className={classes.main}>{children}</Container>
       <footer className={classes.footer}>
-        <Typography>All rights reserved. Next Amazona.</Typography>
+        <Typography>All rights reserved</Typography>
       </footer>
     </div>
   );

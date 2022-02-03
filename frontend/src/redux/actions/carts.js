@@ -2,7 +2,7 @@ import * as actionTypes from '../types';
 import { toast } from 'react-toastify';
 import { changeRobots } from './robots';
 
-function handleAddToCard(data) {
+function handlehandleItemsCard(data) {
   return {
     type: actionTypes.CARDS_LIST,
     payload: data,
@@ -15,7 +15,7 @@ function decrementCartItem(data) {
   };
 }
 
-export const addToCard = (robot) => (dispatch, getState) => {
+export const handleItemsCard = (robot) => (dispatch, getState) => {
   const cartItems = getState().cart.cartItems;
   const cartItemsQuantity = cartItems.length;
   const stock = robot.stock;
@@ -57,7 +57,7 @@ export const addToCard = (robot) => (dispatch, getState) => {
   function handleChangeCardItems(cartItem) {
     const editedRobot = { ...robot, stock: stock - 1 };
     dispatch(changeRobots(editedRobot));
-    dispatch(handleAddToCard(cartItem));
+    dispatch(handlehandleItemsCard(cartItem));
   }
 };
 
@@ -85,7 +85,7 @@ export const handleIncrement = (robot) => (dispatch, getState) => {
     });
     const editedRobot = { ...robotItem, stock: stock - 1 };
     dispatch(changeRobots(editedRobot));
-    dispatch(handleAddToCard(cartItemEdited));
+    dispatch(handlehandleItemsCard(cartItemEdited));
   }
 };
 
@@ -113,7 +113,7 @@ export const handleDecrement = (robot) => (dispatch, getState) => {
   });
   const editedRobot = { ...robotItem, stock: stock + 1 };
   dispatch(changeRobots(editedRobot));
-  dispatch(handleAddToCard(cartItemEdited));
+  dispatch(handlehandleItemsCard(cartItemEdited));
 
   // dispatch(decrementCartItem(id));
 };
