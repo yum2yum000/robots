@@ -28,6 +28,7 @@ const dispatch = useDispatch();
             ></CardMedia>
             <CardContent>
               <Typography>{robot.name}</Typography>
+              <Typography>{robot.material}</Typography>
 
               <Typography>{dateFormat(robot.createdAt)}</Typography>
             </CardContent>
@@ -35,10 +36,7 @@ const dispatch = useDispatch();
           <CardActions>
             <Typography>{priceFormat(robot.price)}</Typography>
             <Button
-         
-         
-         
-                          disabled={robot.stock    <    1    ?    true    :    false}
+              disabled={robot.stock < 1 ? true : false}
               size="small"
               color="primary"
               onClick={() => dispatch(handleItemsCard(robot))}

@@ -9,7 +9,7 @@ const initialState = {
 const handleItemsCard = (state, action) => {
   const cartItems = action.payload;
   const cartItemsEdited = cartItems.filter((item) => item.qty !== 0);
-  console.log(cartItemsEdited);
+
   let totalPrice = 0;
   let totalCount = 0;
   cartItems.map((item) => {
@@ -22,7 +22,6 @@ const handleItemsCard = (state, action) => {
     totalCount,
     cartItems: cartItemsEdited,
     totalPrice: totalPrice.toFixed(1),
-    
   };
 };
 const decrementCartItem = (state, action) => {

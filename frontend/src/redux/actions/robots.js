@@ -13,6 +13,12 @@ function handleChangeRobots(data) {
       payload:data
     }
   }
+function handleFilterRobots(data) {
+  return {
+    type: actionTypes.ROBOTS_FILTER,
+    payload: data,
+  };
+}
   
   export function getRobots() {
     return async dispatch => {
@@ -34,4 +40,9 @@ function handleChangeRobots(data) {
     return  dispatch => {
       dispatch(handleChangeRobots(data));
     }
+  }
+  export function filterRobots(material) {
+    return (dispatch) => {
+      dispatch(handleFilterRobots(material));
+    };
   }
