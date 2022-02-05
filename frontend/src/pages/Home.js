@@ -34,8 +34,6 @@ import {materials} from '../utils/data'
       shallowEqual
     );
 
-    console.log(filteredRobots);
-
     return (
       <Layout>
         <div>

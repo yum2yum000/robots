@@ -16,7 +16,7 @@ const handleItemsCard = (state, action) => {
     totalPrice += Number(item.price);
     totalCount += Number(item.qty);
   });
-  console.log(totalPrice.toFixed(2));
+
   return {
     ...state,
     totalCount,
@@ -30,7 +30,7 @@ const decrementCartItem = (state, action) => {
   cartItems.map((item) => {
     totalPrice += Number(item.price);
   });
-  console.log(totalPrice.toFixed(2));
+
   return {
     ...state,
     cartItems: action.payload,
