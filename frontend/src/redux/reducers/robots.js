@@ -28,15 +28,19 @@ const handleFilterRobots=(state, action)=>{
 }
 const changeRobots=(state, action)=>{
     const robot=action.payload
-    const index=state.robots.findIndex((item)=>item.id===robot.id)
-    state.robots[index]=robot
-    console.log('index',index)
+    const indexRobot = state.robots.findIndex((item) => item.id === robot.id);
+    const indexFilteredRobot = state.filteredRobots.findIndex(
+      (item) => item.id === robot.id
+    );
+    state.robots[indexRobot] = robot;
+    state.filteredRobots[indexFilteredRobot] = robot;
+   
 
-  return{
+  return {
     ...state,
-      robots: state.robots
-    
-  }
+    robots: state.robots,
+    filteredRobots: state.filteredRobots,
+  };
 
 }
 

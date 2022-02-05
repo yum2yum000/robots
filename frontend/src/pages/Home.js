@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react';
 import FilterRobots from '../components/filter/robots';
 import {
     Grid,
@@ -16,37 +16,26 @@ import {materials} from '../utils/data'
 
   export default function Home() {
     const classes = useStyles();
-
     const dispatch = useDispatch();
-
     useEffect(() => {
-      dispatch(getRobots())
-    // Safe to add dispatch to the dependencies array
-    }, [dispatch])
-  
+      dispatch(getRobots());
+      // Safe to add dispatch to the dependencies array
+    }, [dispatch]);
 
+    const { filteredRobots, cartItems, totalPrice, totalCount } = useSelector(
+      (state) => {
+        return {
+          filteredRobots: state.robot.filteredRobots,
+          cartItems: state.cart.cartItems,
+          totalPrice: state.cart.totalPrice,
+          totalCount: state.cart.totalCount,
+        };
+      },
+      shallowEqual
+    );
 
-    const {
-      filteredRobots ,
-      cartItems,
-      totalPrice,
-      totalCount
-  
-    } = useSelector((state) => {
-      return {
-        filteredRobots : state.robot.filteredRobots,
-        cartItems: state.cart.cartItems,
-        totalPrice: state.cart.totalPrice,
-        totalCount: state.cart.totalCount,
-     
-      };
-    }, shallowEqual);
+    console.log(filteredRobots);
 
-
-  
-
-  
-    
     return (
       <Layout>
         <div>
@@ -55,7 +44,11 @@ import {materials} from '../utils/data'
               <h1>Robots</h1>
             </Grid>
             <Grid item xs={4}>
-              <FilterRobots materials={materials} classes={classes} filterRobots={filterRobots}></FilterRobots>
+              <FilterRobots
+                materials={materials}
+                classes={classes}
+                filterRobots={filterRobots}
+              ></FilterRobots>
             </Grid>
           </Grid>
           <Grid container spacing={2} justifyContent="center">

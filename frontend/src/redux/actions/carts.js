@@ -93,7 +93,6 @@ export const handleDecrement = (robot) => (dispatch, getState) => {
   const cartItems = getState().cart.cartItems;
   const robots = getState().robot.robots;
   const stock = robot.stock;
-  const qty = robot.qty;
   let cartItemEdited = {};
 
   const robotItem = robots?.find((x) => x.id === robot.id);

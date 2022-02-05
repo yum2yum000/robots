@@ -30,7 +30,7 @@ function handleFilterRobots(data) {
         dispatch(handleGetRobots(robotsEdited))
  
      } catch (err) {
-         
+         console.log(err);
      }
         
     

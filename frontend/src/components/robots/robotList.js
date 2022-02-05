@@ -14,6 +14,7 @@ const { robots, handleItemsCard, classes } = props;
         {robots &&
           robots?.map((robot) => (
             <Robot
+              key={robot.id}
               robot={robot}
               classes={classes}
               handleItemsCard={handleItemsCard}

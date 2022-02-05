@@ -29,7 +29,9 @@ const Filter = (props) => {
           onChange={handleChange}
         >
           {materials.map((item) => (
-            <MenuItem value={item.name}>{item.name}</MenuItem>
+            <MenuItem value={item.name} key={item.id}>
+              {item.name}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
