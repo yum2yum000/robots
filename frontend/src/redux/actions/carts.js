@@ -2,15 +2,9 @@ import * as actionTypes from '../types';
 import { toast } from 'react-toastify';
 import { changeRobots } from './robots';
 
-function handlehandleItemsCard(data) {
+function handleChangeItemsCard(data) {
   return {
     type: actionTypes.CARDS_LIST,
-    payload: data,
-  };
-}
-function decrementCartItem(data) {
-  return {
-    type: actionTypes.DECREMENT_CARTITEM,
     payload: data,
   };
 }
@@ -57,7 +51,7 @@ export const handleItemsCard = (robot) => (dispatch, getState) => {
   function handleChangeCardItems(cartItem) {
     const editedRobot = { ...robot, stock: stock - 1 };
     dispatch(changeRobots(editedRobot));
-    dispatch(handlehandleItemsCard(cartItem));
+    dispatch(handleChangeItemsCard(cartItem));
   }
 };
 
@@ -85,7 +79,7 @@ export const handleIncrement = (robot) => (dispatch, getState) => {
     });
     const editedRobot = { ...robotItem, stock: stock - 1 };
     dispatch(changeRobots(editedRobot));
-    dispatch(handlehandleItemsCard(cartItemEdited));
+    dispatch(handleChangeItemsCard(cartItemEdited));
   }
 };
 
@@ -112,7 +106,5 @@ export const handleDecrement = (robot) => (dispatch, getState) => {
   });
   const editedRobot = { ...robotItem, stock: stock + 1 };
   dispatch(changeRobots(editedRobot));
-  dispatch(handlehandleItemsCard(cartItemEdited));
-
-  // dispatch(decrementCartItem(id));
+  dispatch(handleChangeItemsCard(cartItemEdited));
 };

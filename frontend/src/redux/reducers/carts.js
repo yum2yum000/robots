@@ -24,27 +24,11 @@ const handleItemsCard = (state, action) => {
     totalPrice: totalPrice.toFixed(1),
   };
 };
-const decrementCartItem = (state, action) => {
-  const cartItems = action.payload;
-  let totalPrice = 0;
-  cartItems.map((item) => {
-    totalPrice += Number(item.price);
-  });
-
-  return {
-    ...state,
-    cartItems: action.payload,
-    totalPrice: totalPrice.toFixed(1),
-  };
-};
-
 
 const cardReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CARDS_LIST:
       return handleItemsCard(state, action);
-    case actionTypes.DECREMENT_CARTITEM:
-      return decrementCartItem(state, action);
 
     default:
       return state;
